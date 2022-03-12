@@ -1,0 +1,22 @@
+
+
+#!/bin/bash
+#Scrip to clean containers and images
+# Author: Aditan Kodjo
+#date 2022-03-12
+
+echo -e "we are cleaning docker containers and images, it will take few seconds\n"
+sleep 2
+docker rm -f $(docker ps -a -q )
+if [ $? -eq 0 ]
+then
+echo " Containers removed with success"
+fi
+sleep 2
+
+docker rmi $(docker images -a -q)
+if [ $? -eq 0 ]
+then
+echo -e "images removed with success\n"
+fi
+sleep 2
